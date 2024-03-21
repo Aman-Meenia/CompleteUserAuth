@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import Messages from "./components/Messages";
-import axios from "axios";
-import FileUploadForm from "./components/FileInput";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
   return (
     <>
-      <FileUploadForm />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
     </>
   );
 }
