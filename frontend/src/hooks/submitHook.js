@@ -21,13 +21,14 @@ export const useSubmit = () => {
         { answer },
       )
       .then((response) => {
-        toast.success(response.data.message, {
+        toast.success(`You score ${response.data.correct} out of 5`, {
           style: {
             borderRadius: "10px",
             background: "#333",
             color: "#fff",
           },
         });
+
         setScore(response.data.correct);
       })
       .catch((err) => {
