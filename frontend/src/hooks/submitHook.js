@@ -16,7 +16,10 @@ export const useSubmit = () => {
     const answer = quesOption;
     console.log(answer);
     await axios
-      .post(`api/v1/question/compare/${topic}`, { answer })
+      .post(
+        `https://quiz-app-c179.onrender.com/api/v1/question/compare/${topic}`,
+        { answer },
+      )
       .then((response) => {
         toast.success(response.data.message, {
           style: {

@@ -23,7 +23,10 @@ export const useLogin = () => {
     // console.log(import.meta.env.VITE_API_URL);
     setLoading(true);
     await axios
-      .post("/api/v1/user/login", { userName, password })
+      .post("https://quiz-app-c179.onrender.com/api/v1/user/login", {
+        userName,
+        password,
+      })
       .then((response) => {
         localStorage.setItem(
           "user",

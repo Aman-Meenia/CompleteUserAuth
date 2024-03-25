@@ -26,7 +26,7 @@ export const useSignup = () => {
     if (!validation) return false;
     setLoading(true);
     await axios
-      .post("/api/v1/user/signup", {
+      .post("https://quiz-app-c179.onrender.com/api/v1/user/signup", {
         fullName,
         email,
         password,

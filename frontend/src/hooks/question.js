@@ -10,7 +10,9 @@ export const useQuestion = () => {
   const getQuestion = async (topic) => {
     setLoading(true);
     await axios
-      .get(`/api/v1/question/getquestion/${topic}`)
+      .get(
+        `https://quiz-app-c179.onrender.com/api/v1/question/getquestion/${topic}`,
+      )
       .then((response) => {
         // console.log(response.data.questions);
         if (response.data.questions.length === 0) {
