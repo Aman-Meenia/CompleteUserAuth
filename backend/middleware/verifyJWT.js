@@ -73,7 +73,7 @@ export const verifyJWT = async (req, res, next) => {
       }
 
       const options = {
-        httpOnly: true,
+        httpsOnly: true,
         secure: true,
       };
       res.cookie("accessToken", accessToken, options);
