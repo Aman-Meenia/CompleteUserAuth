@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   forgetPassword,
   forgetPasswordRequest,
+  loginCheck,
   loginUser,
   logoutUser,
   signupUser,
@@ -22,5 +23,6 @@ router.post("/updateprofilepic", upload.single("file"), updateProfilePic);
 // Secure Routes
 router.post("/logout", verifyJWT, logoutUser);
 router.post("/updatedetail", verifyJWT, updateDetail);
+router.get("/checklogin", verifyJWT, loginCheck);
 
 export default router;

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { UserContext } from "../store/user";
 
 export const useLogin = () => {
   const [loading, setLoading] = useState(false);
-
+  const { user, setUser } = useContext(UserContext);
   const login = async ({ userName, password }) => {
     userName = userName.trim();
     password = password.trim();
@@ -19,12 +20,17 @@ export const useLogin = () => {
       });
       return;
     }
-
+    // console.log(import.meta.env.VITE_API_URL);
     setLoading(true);
     await axios
       .post("/api/v1/user/login", { userName, password })
       .then((response) => {
-        console.log(response.data.message);
+        localStorage.setItem(
+          "user",
+          JSON.stringify(response.data.loggedInUser),
+        );
+        setUser(response.data.loggedInUser);
+
         toast.success(response.data.message, {
           style: {
             borderRadius: "10px",
@@ -34,7 +40,6 @@ export const useLogin = () => {
         });
       })
       .catch((err) => {
-        console.log("error is " + err);
         toast.error(err.response.data.message, {
           style: {
             borderRadius: "10px",

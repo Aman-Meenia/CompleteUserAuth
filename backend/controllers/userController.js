@@ -9,6 +9,7 @@ export const signupUser = async (req, res) => {
   try {
     const { userName, fullName, email, password, confirmPassword, gender } =
       req.body;
+    // check validation
 
     // check field is empty
     if (
@@ -24,6 +25,7 @@ export const signupUser = async (req, res) => {
         message: "All fields are required",
       });
     }
+    console.log("works");
 
     // compare password not match confirm password
 
@@ -41,6 +43,7 @@ export const signupUser = async (req, res) => {
     });
 
     if (existedUser) {
+      console.log(existedUser);
       return res.status(409).json({
         status: false,
         message: "User with email or username already exists",
@@ -69,6 +72,7 @@ export const signupUser = async (req, res) => {
       message: "User created successfully",
     });
   } catch (err) {
+    // console.log(err);
     return res.status(500).json({
       status: false,
       message: err.message,
@@ -139,6 +143,7 @@ export const loginUser = async (req, res) => {
       .json({
         status: true,
         loggedInUser,
+        message: "Logged in successfully",
       });
   } catch (err) {
     console.log("Error in login controller " + err);
@@ -341,6 +346,23 @@ export const updateDetail = async (req, res) => {
     });
   } catch (err) {
     console.log("Error while updateing detials" + err.message);
+    return res.status(500).json({
+      status: false,
+      message: err.message,
+    });
+  }
+};
+
+// <---------------------------------------Login Check ------------------------------>
+
+export const loginCheck = async (req, res) => {
+  try {
+    const user = req.user;
+    return res.status(200).json({
+      status: true,
+      user,
+    });
+  } catch (err) {
     return res.status(500).json({
       status: false,
       message: err.message,

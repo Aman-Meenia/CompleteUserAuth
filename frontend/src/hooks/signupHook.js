@@ -13,6 +13,7 @@ export const useSignup = () => {
     confirmPassword,
     gender,
   }) => {
+    console.log(fullName, email, password, userName, confirmPassword, gender);
     const validation = checkValidation({
       fullName,
       email,
@@ -34,6 +35,7 @@ export const useSignup = () => {
         gender,
       })
       .then((response) => {
+        console.log(response);
         toast.success(response.data.message, {
           style: {
             borderRadius: "10px",

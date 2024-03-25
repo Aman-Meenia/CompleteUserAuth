@@ -4,11 +4,11 @@ import { useSignup } from "../hooks/signupHook";
 const Signup = () => {
   const [input, setInput] = useState({
     fullName: "",
+    userName: "",
+    gender: "",
     email: "",
     password: "",
-    userName: "",
     confirmPassword: "",
-    gender: "",
   });
 
   const { loading, signup } = useSignup();
@@ -16,14 +16,14 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(input);
-    setInput({
-      fullName: "",
-      email: "",
-      password: "",
-      userName: "",
-      confirmPassword: "",
-      gender: "",
-    });
+    // setInput({
+    //   fullName: "",
+    //   email: "",
+    //   password: "",
+    //   userName: "",
+    //   confirmPassword: "",
+    //   gender: "",
+    // });
   };
 
   return (
