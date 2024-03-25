@@ -20,9 +20,13 @@ router.post("/forgetpassword", forgetPasswordRequest);
 router.post("/forgetpassword/:unHashedToken", forgetPassword);
 router.post("/updateprofilepic", upload.single("file"), updateProfilePic);
 
+router.post("/logout", logoutUser);
+router.post("/updatedetail", updateDetail);
+router.get("/checklogin", loginCheck);
+
 // Secure Routes
-router.post("/logout", verifyJWT, logoutUser);
-router.post("/updatedetail", verifyJWT, updateDetail);
-router.get("/checklogin", verifyJWT, loginCheck);
+// router.post("/logout", verifyJWT, logoutUser);
+// router.post("/updatedetail", verifyJWT, updateDetail);
+// router.get("/checklogin", verifyJWT, loginCheck);
 
 export default router;
