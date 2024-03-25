@@ -128,7 +128,7 @@ export const loginUser = async (req, res) => {
     }
 
     const options = {
-      httpsOnly: true,
+      // httpsOnly: true,
       secure: true,
     };
 
@@ -164,7 +164,7 @@ export const logoutUser = async (req, res) => {
   await user.save({ validateBeforeSave: false });
 
   const options = {
-    httpsOnly: true,
+    // httpsOnly: true,
     secure: true,
   };
   console.log("User logout successfully");
